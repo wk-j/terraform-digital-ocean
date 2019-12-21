@@ -1,5 +1,3 @@
-variable "do_token" {}
-
 resource "digitalocean_ssh_key" "default" {
   name       = "Terraform Example"
   public_key = file("/Users/wk/.ssh/id_rsa.pub")
@@ -16,8 +14,4 @@ resource "digitalocean_droplet" "terraform" {
   size     = "s-1vcpu-2gb"
   tags     = ["terraform"]
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
-}
-
-output "droplet_output" {
-  value = digitalocean_droplet.terraform.ipv4_address
 }
