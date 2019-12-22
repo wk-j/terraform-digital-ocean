@@ -1,13 +1,15 @@
 ## Ansible
 
-```
 ```bash
 brew install ansible
-ansible all -i root@128.199.160.38, -m ping
+ansible all --user root -i hosts -m ping
 
-ansible-playbook --user root -i hosts server.yml
-ansible-playbook --user root -i hosts postgres.yml -e "postgresql_version=9.3"
-ansible-playbook --user root -i hosts hello.yml
+ansible webservers -m apt -a "name=mysql-server state=present"
+ansible webservers -m apt -a "name=python3 state=present"
+
+ansible-playbook server.yml
+ansible-playbook postgres.yml -e "postgresql_version=9.3"
+ansible-playbook hello.yml
 
 psql -d wk -U wk -W
 ```
