@@ -11,6 +11,7 @@ terraform destroy -auto-approve
 
 ```bash
 echo do_token=\"$DO_TOKEN\" > terraform.tfvars
+ssh-keygen -l -f ~/.ssh/id_rsa.pub
 ```
 
 ## Resource
